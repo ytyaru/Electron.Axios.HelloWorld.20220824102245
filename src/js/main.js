@@ -313,7 +313,9 @@ ipcMain.handle('createRepo2', async(event, username, token, repo, description, o
 })
 ipcMain.handle('axiosPost', async(event, url, data, config)=>{
     const res = await axios.post(url, data, config).catch(e=>console.error(e));
-    return res
+    //return res // Error: Error invoking remote method 'axiosPost': Error: An object could not be cloned.
+    console.log(res.data)
+    return res.data
 })
 ipcMain.handle('axiosGet', async(event, url, config)=>{
     const res = await axios.get(url, config)
